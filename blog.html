@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Blog</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<div class="header">
+		<div>
+			<a href="index.html"><img src="images/yaka.png" alt="Logo"></a>
+		</div>
+	</div>
+	<div class="body">
+		<div>
+			<div class="header">
+				<ul>
+					<li>
+						<a href="index.html">Home</a>
+					</li>
+					<li>
+						<a href="recipes.html">Recipes</a>
+					</li>
+					<li>
+						<a href="featured.html">Featured Recipes</a>
+					</li>
+					<li>
+						<a href="about.html">About</a>
+					</li>
+					<li class="current">
+						<a href="blog.html">Blog</a>
+					</li>
+					<li>
+						<a href="Login.html">Users</a>
+					</li>
+				</ul>
+			</div>
+			<div class="body">
+				<div id="content">
+					<div>
+						<div class="container">
+    						<h2>Leave us a comment</h2>
+   							 <form>
+      						 <textarea id="" placeholder="Add Your Comment" value=" "></textarea>
+       						<div class="btn">
+           					<input id="submit" type="submit" value="Comment">
+           					<button id="clear">
+           					 &#128591;</button>
+       					</div>
+   				 </form>
+					</div>
+					<div class="comments">
+   					<h2>Comments</h2>
+    				<div id="comment-box">
+    				</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+		const field = document.querySelector('textarea');
+		const backUp = field.getAttribute('placeholder')
+		const btn = document.querySelector('.btn');
+		const clear = document.getElementById('clear')
+		const submit = document.querySelector('#submit')
+		// const comments = document.querySelector('#comment-box')
+		const comments = document.getElementById('comment-box');
+
+		// array to store the comments
+		const comments_arr = [];
+
+		// to generate html list based on comments array
+		const display_comments = () => {
+  		let list = '<ul>';
+   		comments_arr.forEach(comment => {
+   	 	list += `<li>${comment}</li>`;
+  		})
+  		list += '</ul>';
+  		comments.innerHTML = list;
+		}
+
+		clear.onclick = function(event){
+ 	 	event.preventDefault();
+  		// reset the array
+   		comments_arr.length = 0;
+  		// re-genrate the comment html list
+  		display_comments();
+		}
+
+		submit.onclick = function(event){
+    	event.preventDefault();
+    	const content = field.value;
+    	if(content.length > 0){ // if there is content
+      	// add the comment to the array
+      	comments_arr.push(content);
+      	// re-genrate the comment html list
+      	display_comments();
+      	// reset the textArea content
+      	field.value = '';
+    }
+}
+</script>
+		<div>
+			<div>
+				<h3>Featured Recipes</h3>
+				<ul id="featured">
+					<li>
+						<a href="featured.html"><img src="images/rsz_milk-rice.jpg" alt="Image"></a>
+						<div>
+							<h2><a href="featured.html">Milk Rice (Kiri Báth)</a></h2>
+							<span></span>
+						</div>
+					</li>
+					<li>
+						<a href="featured1.html"><img src="images/rsz_canned_fish.jpg" alt="Image"></a>
+						<div>
+							<h2><a href="featured1.html">Sri Lankan canned fish curry</a></h2>
+							<span></span>
+						</div>
+					</li>
+					<li>
+						<a href="featured3.html"><img src="images/rsz_jackfruit.jpg" alt="Image"></a>
+						<div>
+							<h2><a href="featured3.html">Jack fruit curry (Kiri Kós)</a></h2>
+							<span></span>
+						</div>
+				</ul>
+				</div>
+			<div>
+				<h3>Blog</h3>
+				<ul id="blog">
+					<li>
+						<a href="blog.html">Thank you for the ideas. We are able to find out good recipes.</a>
+						<span class="date">by Ravi</span>
+					</li>
+					<li>
+						<a href="blog.html">Thank you for good suggestions will try out now.</a>
+						<span class="date">by Meena</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div>
+			<p>
+				&copy; Copyright 2023. All rights reserved
+			</p>
+		</div>
+	</div>
+</body>
+</html>
